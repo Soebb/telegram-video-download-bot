@@ -1,6 +1,6 @@
 from pydantic import BaseSettings
 from pathlib import Path
-import logging
+import logging, os
 
 
 class Settings(BaseSettings):
@@ -32,9 +32,10 @@ class Settings(BaseSettings):
 
     @property
     def token(self) -> str:
-        assert self.token_path.is_file(), "No token provided"
-        with open(self.token_path, "r") as f:
-            return f.read().strip()
+        #assert self.token_path.is_file(), "No token provided"
+        #with open(self.token_path, "r") as f:
+        #    return f.read().strip()
+        return os.environ.get('BOT_TOKEN')
 
     class Config:
         env_file = '.env'
