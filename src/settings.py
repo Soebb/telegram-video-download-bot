@@ -11,8 +11,9 @@ class Settings(BaseSettings):
     bot_handle: str = "@something"
 
     #max_video_length_s: int = 240
-    resource_path: Path = Path(__file__).parent / "../resources"
+    max_video_length_s = int(os.environ.get('max_video_length_s'))
 
+    resource_path: Path = Path(__file__).parent / "../resources"
     logging_mode: str = "INFO"
     dev_null_chat: int = -1
 
