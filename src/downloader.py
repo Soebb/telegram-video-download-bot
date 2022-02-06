@@ -118,7 +118,9 @@ class Downloader:
     def _filter_length(self, info_dict, *args, **kwargs):
         """Filters videos by their length in s to remove very large ones"""
         duration = info_dict.get("duration", 0)
-        if duration is None or duration < config.max_video_length_s:
+        if duration is None:
+            return None
+        if config.max_video_length_s and duration < config.max_video_length_s:
             return None
         return resource_manager.get_string("reject_too_long", duration=duration)
 
