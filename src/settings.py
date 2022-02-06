@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     bot_name: str = "Video Bot"
     bot_handle: str = "@something"
 
-    max_video_length_s: int = 240
+    #max_video_length_s: int = 240
     resource_path: Path = Path(__file__).parent / "../resources"
 
     logging_mode: str = "INFO"
